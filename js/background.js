@@ -49,7 +49,9 @@ let changeLanguage = async (language) => {
             // window.alert(labelarr+'(' + category.label + ')')
             if (!!labelarr){category.label=labelarr + '(' + category.label + ')'}
             category.entries.forEach((item) => {
-                if (!!itemname[item.text]){item.text = itemname[item.text] + '(' + item.text + ')'}else{item.text='★★★' + item.text}
+                if ((!!item.text) && (!!itemname[item.text])){item.text = itemname[item.text] + '(' + item.text + ')'}
+				else if (!!itemname[item.type]){item.text = itemname[item.type] + '(' + item.type + ')'}
+				else{item.text='★★★' + item.type}
             })
         })
         const passivesNotableFile = chrome.runtime.getURL('json/passivesNotable.json')
