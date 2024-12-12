@@ -1,8 +1,8 @@
 const mydate=new Date()
-const vararr=[{id:"LocalVersion",link:'./manifest.json'},{id:"OnlineVersion",link:'https://gitee.com/a643226422/poe/raw/master/manifest.json'},]
+const vararr=[{id:"LocalVersion",link:'./manifest.json'},{id:"OnlineVersion",link:'https://github.com/cswzhang/POE2-Trade-zh_tw/blob/master/manifest.json'},]
 localStorage.versionoldmin = localStorage.versionoldmin || 0
 let min=mydate.getTime()/1000/60
-/*vararr.forEach(async (verojb)=> {
+vararr.forEach(async (verojb)=> {
     if (Math.round(min-localStorage.versionoldmin)>5){
         document.getElementById(verojb.id).innerText="正在获取版本..."
         await fetch(verojb.link).then(res=>res.json()).then(data=>{
@@ -12,7 +12,7 @@ let min=mydate.getTime()/1000/60
         localStorage.versionoldmin = min
     }
     document.getElementById(verojb.id).innerText=localStorage[verojb.id] || "获取版本失败"
-})*/
+})
 
 const $ = (selector) => document.querySelector(selector)
 const classList = (arrDOM) => {
@@ -51,10 +51,10 @@ const setlocaldateselect = (select) => {
     chrome.storage.local.set({ localdateselect: select })
 }
 
-zhCnBtn.addEventListener('click', () => { setLanguage('zh_cn')})
+zhCnBtn.addEventListener('click', () => { setLanguage('zh_tw')})
 uiZhUsBtn.addEventListener('click', () => setUILanguage('ZhUs'))
-uiZhBtn.addEventListener('click', () => setUILanguage('Zh'))
-uiUsBtn.addEventListener('click', () => setUILanguage('Us'))
+//uiZhBtn.addEventListener('click', () => setUILanguage('Zh'))
+//uiUsBtn.addEventListener('click', () => setUILanguage('Us'))
 
 clearCacheBtn.addEventListener('click', () => {
     chrome.storage.local.get('skip',({skip})=>{
@@ -96,19 +96,15 @@ let checkStatus = () => {
             if (language === 'us') {
                 langText.innerText = 'us'
                 classList([zhCnBtn]).remove('disabled')
-            } else if (language === 'zh_cn') {
+            } else if (language === 'zh_tw') {
                 if (!!select){
                     langText.innerText = language
-                    classList([uiZhUsBtn, uiZhBtn, uiUsBtn]).remove('disabled')
+                    classList([uiZhUsBtn]).remove('disabled')
                     localselectText.innerText = localdateselect === 'cache' ? '(备用)' : '(原始)'
                 }
             }
             if (uiLanguage === 'ZhUs') {
                 uiZhUsBtn.classList.add('disabled')
-            } else if (uiLanguage === 'Zh') {
-                uiZhBtn.classList.add('disabled')
-            } else if (uiLanguage === 'Us') {
-                uiUsBtn.classList.add('disabled')
             }
         }
         let Hiddencontrols =(arr,str)=>{

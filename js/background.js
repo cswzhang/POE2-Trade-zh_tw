@@ -36,7 +36,7 @@ let changelocaldateselect = async (select) => {
     chrome.storage.local.set({localdateselect:select})
 }    
 let changeLanguage = async (language) => {
-    if (language === 'zh_cn') {
+    if (language === 'zh_tw') {
         let data=await fetchData['us']()
         if(!data){
             window.alert('加载国际服数据失败,请检查是否能正常打开国际服市集!!!')
@@ -165,7 +165,7 @@ let changeLanguage = async (language) => {
 let changeUILanguage = async (UILanguage) => {
     let UILanguageJSON = {}
     chrome.storage.local.get('language', ({ language }) => {
-        if (language === 'zh_cn') {
+        if (language === 'zh_tw') {
             (async ()=>{
                 let translateFile = chrome.runtime.getURL('json/interface2.json')
                 let translateText = await fetch(translateFile).then((res) => res.json())
@@ -211,7 +211,7 @@ let fetchData = {
         let itemname = await fetch(translateFile).then((res) => res.json()) 
 		return { items, stats, static,itemname,filters }
 	},  
-	async zh_cn() {
+	async zh_tw() {
         let zh_url
         let stats
         let static
