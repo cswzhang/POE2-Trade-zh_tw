@@ -1,5 +1,5 @@
 const mydate=new Date()
-const vararr=[{id:"LocalVersion",link:'./manifest.json'},{id:"OnlineVersion",link:'https://github.com/cswzhang/POE2-Trade-zh_tw/blob/master/manifest.json'},]
+const vararr=[{id:"LocalVersion",link:'./manifest.json'},{id:"OnlineVersion",link:'https://raw.githubusercontent.com/cswzhang/POE2-Trade-zh_tw/refs/heads/master/manifest.json'},]
 localStorage.versionoldmin = localStorage.versionoldmin || 0
 let min=mydate.getTime()/1000/60
 vararr.forEach(async (verojb)=> {
