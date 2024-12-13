@@ -152,7 +152,7 @@ let changeLanguage = async (language) => {
                 //console.log(translation.stats)
                 //console.log(translation.stats.localdateselect)
                 if (!!translation.stats.localdateselect){
-                    chrome.storage.local.set({ uiLanguage: 'Zh',select:true})
+                    chrome.storage.local.set({ uiLanguage: 'ZhUs',select:true})
                     window.alert(translation.stats.localdateselect)
                 }else{
                     window.alert('保存国服数据失败!!!')
